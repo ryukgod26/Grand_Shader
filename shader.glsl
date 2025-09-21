@@ -16,7 +16,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
    vec2 uv = (fragCoord * 2.0 - iResolution.xy) / iResolution.y;
     vec2 uv0 = uv;
-    uv = fract(uv * 1.7) -0.5;
+   uv = fract(uv * 1.7) -0.5;
     vec2 m =iMouse.xy/iResolution.xy;
    
    
@@ -24,8 +24,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
 for(float i=0.0; i<2.0; i++)
 {
-float d = length(uv) * exp(-length(uv)) * sin(iTime);
-d = cos(d*16. + iTime/0.2)/16.;
+float d = length(uv) * exp(-length(uv)) * (sign(tan(iTime))) * sin(iTime);
+d = cos(d*16. + iTime )/16.;
 d = abs(d);
 vec3 col = palette(length(uv0) + i*.3 + .4*iTime);
 d = pow(0.01/d,1.7);
